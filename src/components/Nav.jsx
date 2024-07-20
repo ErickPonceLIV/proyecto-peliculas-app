@@ -4,18 +4,17 @@ const Nav = () => {
   return (
 <>
 <nav className="bg-white border-gray-200 dark:bg-gray-900">
-  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 ml-5 mr-5">
     <a
-      href="https://flowbite.com/"
+      href="https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1"
       className="flex items-center space-x-3 rtl:space-x-reverse"
     >
       <img
-        src="https://flowbite.com/docs/images/logo.svg"
-        className="h-8"
+        src="https://cdn-icons-png.flaticon.com/512/5977/5977585.png"
+        className="h-20"
         alt="Flowbite Logo"
       />
       <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-        Flowbite
       </span>
     </a>
     <button
@@ -47,10 +46,9 @@ const Nav = () => {
         <li>
           <a
             href="#"
-            className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-            aria-current="page"
+            className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
-            Home
+            Popular
           </a>
         </li>
         <li>
@@ -58,7 +56,7 @@ const Nav = () => {
             href="#"
             className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
-            About
+            Top Rated
           </a>
         </li>
         <li>
@@ -66,23 +64,7 @@ const Nav = () => {
             href="#"
             className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
           >
-            Services
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-          >
-            Pricing
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-          >
-            Contact
+            Upcoming
           </a>
         </li>
       </ul>
@@ -90,6 +72,19 @@ const Nav = () => {
   </div>
 </nav>
 
+<div className='flex justify-center mt-4'>
+  <label
+    htmlFor="searChMovie"
+    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+  </label>
+  <input
+    type="text"
+    id="searchMovie"
+    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-4/5 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+    placeholder="Search Movie"
+    required=""
+  />
+</div>
 
 </>
   )
