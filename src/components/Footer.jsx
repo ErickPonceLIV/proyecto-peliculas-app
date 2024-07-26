@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 const Footer = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -10,8 +11,9 @@ const Footer = () => {
 
   const fetchMovies = async (page = 1) => {
     try {
+      const url = import.meta.env.VITE_API_KEY;
       const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=TU_API_KEY&page=${page}`
+        `https://api.themoviedb.org/3/movie/popular?api_key=${url}&page=${page}`
       );
       const data = await response.json();
       setTotalPages(data.total_pages);
