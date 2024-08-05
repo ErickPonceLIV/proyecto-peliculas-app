@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-const MovieCard = () => {
+const MovieCard = ({ currentPage, setTotalPages }) => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const apiReadAccessToken = import.meta.env.VITE_API_ACCESS_TOKEN;
-  const MOVIE_API_URL = "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1";
+  const MOVIE_API_URL = "https://api.themoviedb.org/3/movie/now_playing?language=en-US";
 
   const fetchMovies = async () => {
     const options = {
@@ -16,13 +16,14 @@ const MovieCard = () => {
     };
 
     try {
-      const response = await fetch(MOVIE_API_URL, options);
+      const response = await fetch(`${MOVIE_API_URL}&page=${currentPage}`, options);
       if (!response.ok) {
         console.error(`HTTP error! status: ${response.status}`);
         return;
       }
       const data = await response.json();
       setMovies(data.results || []);
+      setTotalPages(data.total_pages); // Actualizar el total de páginas
     } catch (error) {
       console.error("Error fetching movies:", error);
     }
@@ -30,7 +31,7 @@ const MovieCard = () => {
 
   useEffect(() => {
     fetchMovies();
-  }, [apiReadAccessToken]);
+  }, [apiReadAccessToken, currentPage]);
 
   const filterMovies = (movies, searchValue) => {
     return movies.filter(movie =>

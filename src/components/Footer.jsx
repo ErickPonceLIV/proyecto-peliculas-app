@@ -1,27 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-
-const Footer = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-
-  useEffect(() => {
-    fetchMovies(currentPage);
-  }, [currentPage]);
-
-  const fetchMovies = async (page = 1) => {
-    try {
-      const url = import.meta.env.VITE_API_KEY;
-      const response = await fetch(
-        `https://api.themoviedb.org/3/movie/popular?api_key=${url}&page=${page}`
-      );
-      const data = await response.json();
-      setTotalPages(data.total_pages);
-    } catch (error) {
-      console.error('Error fetching movies:', error);
-    }
-  };
-
+const Footer = ({ currentPage, setCurrentPage, totalPages }) => {
   const handlePrevious = () => {
     if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
